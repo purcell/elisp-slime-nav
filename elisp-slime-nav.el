@@ -13,7 +13,7 @@
 ;;;###autoload
 (define-minor-mode elisp-slime-nav-mode
   "Enable Slime-style navigation of elisp symbols using M-. and M-,"
-  nil " SN" elisp-slime-nav-mode-map)
+  nil " SliNav" elisp-slime-nav-mode-map)
 
 (require 'etags)
 
