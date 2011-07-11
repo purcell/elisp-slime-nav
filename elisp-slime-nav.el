@@ -30,7 +30,7 @@ variable, library or face."
        ((boundp sym) (find-variable sym))
        ((or (featurep sym) (locate-library (symbol-name sym)))
         (find-library (symbol-name sym)))
-       ((find-definition-noselect sym 'defface)
+       ((facep sym)
         (find-face-definition sym))
        (:else
         (progn
