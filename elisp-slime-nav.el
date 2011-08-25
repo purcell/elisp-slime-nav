@@ -1,13 +1,19 @@
-;;; Make M-. and M-, work in elisp like they do in slime
-;;;
-;;; Author: Steve Purcell <steve at sanityinc dot com>
-;;;
-;;; Homepage: https://github.com/purcell/elisp-slime-nav
-;;;
-;;; Usage:
-;;;   (require 'elisp-slime-nav)
-;;;   (add-hook 'emacs-lisp-mode-hook (lambda () (elisp-slime-nav-mode t)))
-
+;;; elisp-slime-nav.el --- Make M-. and M-, work in elisp like they do in slime
+;;
+;; Author: Steve Purcell <steve@sanityinc.com>
+;; Keywords: navigation slime elisp emacs-lisp
+;; URL: https://github.com/purcell/elisp-slime-nav
+;; Version: 0.1
+;;
+;;; Commentary
+;;
+;; This package provides Slime's convenient "M-." and "M-," navigation
+;; in `emacs-lisp-mode'.
+;;
+;; Usage:
+;;   (require 'elisp-slime-nav)
+;;   (add-hook 'emacs-lisp-mode-hook (lambda () (elisp-slime-nav-mode t)))
+;;; Code
 (defvar elisp-slime-nav-mode-map (make-keymap))
 
 ;;;###autoload
@@ -41,5 +47,5 @@ variable, library or face."
 (define-key elisp-slime-nav-mode-map (kbd "M-,") 'pop-tag-mark)
 
 
-
 (provide 'elisp-slime-nav)
+;;; elisp-slime-nav.el ends here
