@@ -30,6 +30,7 @@
   "Enable Slime-style navigation of elisp symbols using M-. and M-,"
   nil " SliNav" elisp-slime-nav-mode-map)
 
+(eval-when-compile (require 'cl))
 (require 'etags)
 
 
