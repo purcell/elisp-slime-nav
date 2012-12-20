@@ -73,7 +73,39 @@ Argument SYM-NAME thing to find."
           (error "Don't know how to find '%s'" sym)))))))
 
 
+;;;###autoload
+(defun elisp-slime-nav-describe-elisp-thing-at-point (sym-name)
+  "Describe to the elisp thing at point, be it a function, variable, class or face.
+
+With a prefix arg, prompt for the symbol to jump to.
+
+Argument SYM-NAME thing to find."
+  (interactive
+   (list
+    (let* ((sym-at-point (symbol-at-point))
+           (at-point (and sym-at-point (symbol-name sym-at-point))))
+      (if current-prefix-arg
+          (completing-read "Symbol: "
+                           (elisp-slime-nav--all-navigable-symbol-names)
+                           nil t at-point)
+        at-point))))
+  (when sym-name
+    (let ((sym (intern sym-name)))
+      (message "search for %s" (pp-to-string sym))
+      (cond
+       ((string= "-face" (subseq sym-name -5))
+	(let ((sym (intern (subseq sym-name 0 -5))))
+	  (when
+	      (facep sym) (describe-face  sym))))
+       ((class-p sym) (describe-class sym))
+       ((fboundp sym) (describe-function sym))
+       ((boundp sym) (describe-variable sym))
+       (:else
+        (progn
+          (error "Don't know how to describe '%s'" sym)))))))
+
 (define-key elisp-slime-nav-mode-map (kbd "M-.") 'elisp-slime-nav-find-elisp-thing-at-point)
+(define-key elisp-slime-nav-mode-map (kbd "M-?") 'elisp-slime-nav-describe-elisp-thing-at-point)
 (define-key elisp-slime-nav-mode-map (kbd "M-,") 'pop-tag-mark)
 
 
