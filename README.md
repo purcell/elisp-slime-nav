@@ -25,8 +25,12 @@ add the following to your `~/.emacs` or `~/.emacs.d/init.el`:
 If you're an Emacs 24 user or you have a recent version of `package.el`
 you can install projectile from the
 [MELPA](http://melpa.milkbox.net) repository. The version of
-`elisp-slime-nav` there will always be up-to-date. You'll need to add
-the `emacs-lisp-mode-hook`.
+`elisp-slime-nav` there will always be up-to-date. You'll still need to add
+the `emacs-lisp-mode-hook` after you've installed the package via MELPA:
+
+``` lisp
+(add-hook 'emacs-lisp-mode-hook 'elisp-slime-nav-mode)
+```
 
 ### Emacs Prelude
 
@@ -39,6 +43,6 @@ Homepage: https://github.com/purcell/elisp-slime-nav
 
 This little library was extracted from the author's
 [full Emacs configuration](https://github.com/purcell/emacs.d), which
-readers might find of interest:
+readers might find of interest.
 
 
