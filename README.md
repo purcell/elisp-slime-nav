@@ -32,10 +32,6 @@ the `emacs-lisp-mode-hook` after you've installed the package via MELPA:
 (add-hook 'emacs-lisp-mode-hook 'elisp-slime-nav-mode)
 ```
 
-### Emacs Prelude
-
-`elisp-slime-nav` is bundled with [Emacs Prelude](https://github.com/bbatsov/prelude). 
-
 ## About
 
 Author: Steve Purcell <steve at sanityinc dot com>
