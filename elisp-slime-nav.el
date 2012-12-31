@@ -17,7 +17,9 @@
 ;; Usage:
 ;;
 ;;   (require 'elisp-slime-nav)
-;;   (add-hook 'emacs-lisp-mode-hook (lambda () (elisp-slime-nav-mode t)))
+;;   (add-hook 'emacs-lisp-mode-hook 'elisp-slime-nav-mode)
+;;
+;; When installing from an ELPA package, this hook is added for you.
 ;;
 ;; Known issues:
 ;;
@@ -89,6 +91,9 @@ Argument SYM-NAME thing to find."
 (define-key elisp-slime-nav-mode-map (kbd "M-,") 'pop-tag-mark)
 (define-key elisp-slime-nav-mode-map (kbd "C-c C-d d") 'elisp-slime-nav-describe-elisp-thing-at-point)
 (define-key elisp-slime-nav-mode-map (kbd "C-c C-d C-d") 'elisp-slime-nav-describe-elisp-thing-at-point)
+
+;;;###autoload
+(add-hook 'emacs-lisp-mode-hook 'elisp-slime-nav-mode)
 
 
 (provide 'elisp-slime-nav)

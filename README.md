@@ -22,20 +22,15 @@ add the following to your `~/.emacs` or `~/.emacs.d/init.el`:
 
 ``` lisp
 (require 'elisp-slime-nav)
-(add-hook 'emacs-lisp-mode-hook 'elisp-slime-nav-mode)
 ```
 
 ### MELPA
 
-If you're an Emacs 24 user or you have a recent version of `package.el`
-you can install projectile from the
+If you're an Emacs 24 user or you have a recent version of
+`package.el` you can install `elisp-slime-nav` from the
 [MELPA](http://melpa.milkbox.net) repository. The version of
-`elisp-slime-nav` there will always be up-to-date. You'll still need to add
-the `emacs-lisp-mode-hook` after you've installed the package via MELPA:
-
-``` lisp
-(add-hook 'emacs-lisp-mode-hook 'elisp-slime-nav-mode)
-```
+`elisp-slime-nav` there will always be up-to-date. There are also
+packages in Marmalade.
 
 ## About
 
