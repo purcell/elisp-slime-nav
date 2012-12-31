@@ -8,6 +8,11 @@ This plugin provides similar navigation for Emacs Lisp, supporting
 navigation to the definitions of variables, functions, libraries and
 faces.
 
+Additionally, `elisp-slime-nav` provides a way to describe the symbol
+at point, whatever its type. As with `slime-describe-symbol`, this
+functionality is bound both to <kbd>C-c C-d d</kbd> and <kbd>C-c C-d
+C-d</kbd> by default.
+
 ## Installation
 
 ### Manual
