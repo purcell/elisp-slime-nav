@@ -28,6 +28,8 @@
 ;;
 ;;; Code:
 
+(require 'help-mode)
+
 (defvar elisp-slime-nav-mode-map (make-keymap))
 
 ;;;###autoload
