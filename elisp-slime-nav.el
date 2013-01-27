@@ -93,7 +93,8 @@ Argument SYM-NAME thing to find."
 (define-key elisp-slime-nav-mode-map (kbd "C-c C-d C-d") 'elisp-slime-nav-describe-elisp-thing-at-point)
 
 ;;;###autoload
-(add-hook 'emacs-lisp-mode-hook 'elisp-slime-nav-mode)
+(dolist (hook '(emacs-lisp-mode-hook ielm-mode-hook))
+  (add-hook hook 'elisp-slime-nav-mode))
 
 
 (provide 'elisp-slime-nav)
