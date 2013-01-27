@@ -94,6 +94,7 @@ Argument SYM-NAME thing to find."
 
 ;;;###autoload
 (add-hook 'emacs-lisp-mode-hook 'elisp-slime-nav-mode)
+(add-hook 'lisp-interaction-mode 'elisp-slime-nav-mode)
 
 
 (provide 'elisp-slime-nav)
