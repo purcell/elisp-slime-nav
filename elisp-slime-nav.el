@@ -18,6 +18,7 @@
 ;;
 ;;   (require 'elisp-slime-nav)
 ;;   (add-hook 'emacs-lisp-mode-hook 'elisp-slime-nav-mode)
+;;   (add-hook 'ielm-mode-hook 'elisp-slime-nav-mode)
 ;;
 ;; When installing from an ELPA package, this hook is added for you.
 ;;
@@ -32,10 +33,13 @@
 
 (defvar elisp-slime-nav-mode-map (make-keymap))
 
+(defvar elisp-slime-nav-mode-lighter " SliNav")
+
 ;;;###autoload
-(define-minor-mode elisp-slime-nav-mode
+(define-minor-mode elisp-slime-nav-mode nil
   "Enable Slime-style navigation of elisp symbols using M-. and M-,"
-  nil " SliNav" elisp-slime-nav-mode-map)
+  :lighter elisp-slime-nav-mode-lighter
+  :keymap  elisp-slime-nav-mode-map)
 
 (eval-when-compile (require 'cl))
 (require 'etags)
@@ -94,11 +98,6 @@ Argument SYM-NAME thing to find."
 (define-key elisp-slime-nav-mode-map (kbd "M-,") 'pop-tag-mark)
 (define-key elisp-slime-nav-mode-map (kbd "C-c C-d d") 'elisp-slime-nav-describe-elisp-thing-at-point)
 (define-key elisp-slime-nav-mode-map (kbd "C-c C-d C-d") 'elisp-slime-nav-describe-elisp-thing-at-point)
-
-;;;###autoload
-(dolist (hook '(emacs-lisp-mode-hook ielm-mode-hook))
-  (add-hook hook 'elisp-slime-nav-mode))
-
 
 (provide 'elisp-slime-nav)
 ;;; elisp-slime-nav.el ends here
