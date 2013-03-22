@@ -99,4 +99,7 @@ Argument SYM-NAME thing to find."
   (help-xref-interned (intern sym-name)))
 
 (provide 'elisp-slime-nav)
+;; Local Variables:
+;; indent-tabs-mode: nil
+;; End:
 ;;; elisp-slime-nav.el ends here
