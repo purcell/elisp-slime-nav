@@ -4,6 +4,7 @@
 ;; Keywords: navigation slime elisp emacs-lisp
 ;; URL: https://github.com/purcell/elisp-slime-nav
 ;; Version: DEV
+;; Package-Requires: ((cl-lib "0.2"))
 ;;
 ;;; Commentary:
 ;;
@@ -18,6 +19,7 @@
 ;;
 ;;   (require 'elisp-slime-nav)
 ;;   (add-hook 'emacs-lisp-mode-hook 'elisp-slime-nav-mode)
+;;   (add-hook 'ielm-mode-hook 'elisp-slime-nav-mode)
 ;;
 ;; When installing from an ELPA package, this hook is added for you.
 ;;
@@ -28,24 +30,31 @@
 ;;
 ;;; Code:
 
+(eval-when-compile (require 'cl-lib))
+(require 'etags)
 (require 'help-mode)
 
-(defvar elisp-slime-nav-mode-map (make-keymap))
+(defvar elisp-slime-nav-mode-map
+  (let ((map (make-sparse-keymap)))
+    (define-key map (kbd "M-.")         'elisp-slime-nav-find-elisp-thing-at-point)
+    (define-key map (kbd "M-,")         'pop-tag-mark)
+    (define-key map (kbd "C-c C-d d")   'elisp-slime-nav-describe-elisp-thing-at-point)
+    (define-key map (kbd "C-c C-d C-d") 'elisp-slime-nav-describe-elisp-thing-at-point)
+    map))
+
+(defvar elisp-slime-nav-mode-lighter " SliNav")
 
 ;;;###autoload
-(define-minor-mode elisp-slime-nav-mode
+(define-minor-mode elisp-slime-nav-mode nil
   "Enable Slime-style navigation of elisp symbols using M-. and M-,"
-  nil " SliNav" elisp-slime-nav-mode-map)
-
-(eval-when-compile (require 'cl))
-(require 'etags)
-
+  :lighter elisp-slime-nav-mode-lighter
+  :keymap  elisp-slime-nav-mode-map)
 
 (defun elisp-slime-nav--all-navigable-symbol-names ()
   "Return a list of strings for the symbols to which navigation is possible."
-  (loop for x being the symbols
-        if (or (fboundp x) (boundp x) (symbol-plist x) (facep x))
-        collect (symbol-name x)))
+  (cl-loop for x being the symbols
+           if (or (fboundp x) (boundp x) (symbol-plist x) (facep x))
+           collect (symbol-name x)))
 
 (defun elisp-slime-nav--read-symbol-at-point ()
   "Return the symbol at point as a string.
@@ -66,7 +75,7 @@ Argument SYM-NAME thing to find."
   (interactive (list (elisp-slime-nav--read-symbol-at-point)))
   (when sym-name
     (let ((sym (intern sym-name)))
-      (message "search for %s" (pp-to-string sym))
+      (message "Searching for %s..." (pp-to-string sym))
       (ring-insert find-tag-marker-ring (point-marker))
       (cond
        ((fboundp sym) (find-function sym))
@@ -89,16 +98,8 @@ Argument SYM-NAME thing to find."
   (interactive (list (elisp-slime-nav--read-symbol-at-point)))
   (help-xref-interned (intern sym-name)))
 
-
-(define-key elisp-slime-nav-mode-map (kbd "M-.") 'elisp-slime-nav-find-elisp-thing-at-point)
-(define-key elisp-slime-nav-mode-map (kbd "M-,") 'pop-tag-mark)
-(define-key elisp-slime-nav-mode-map (kbd "C-c C-d d") 'elisp-slime-nav-describe-elisp-thing-at-point)
-(define-key elisp-slime-nav-mode-map (kbd "C-c C-d C-d") 'elisp-slime-nav-describe-elisp-thing-at-point)
-
-;;;###autoload
-(dolist (hook '(emacs-lisp-mode-hook ielm-mode-hook))
-  (add-hook hook 'elisp-slime-nav-mode))
-
-
 (provide 'elisp-slime-nav)
+;; Local Variables:
+;; indent-tabs-mode: nil
+;; End:
 ;;; elisp-slime-nav.el ends here
