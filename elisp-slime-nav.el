@@ -4,6 +4,7 @@
 ;; Keywords: navigation slime elisp emacs-lisp
 ;; URL: https://github.com/purcell/elisp-slime-nav
 ;; Version: DEV
+;; Package-Requires: ((cl-lib "0.2"))
 ;;
 ;;; Commentary:
 ;;
@@ -28,6 +29,8 @@
 ;;
 ;;; Code:
 
+(eval-when-compile (require 'cl-lib))
+(require 'etags)
 (require 'help-mode)
 
 (defvar elisp-slime-nav-mode-map
@@ -43,15 +46,11 @@
   "Enable Slime-style navigation of elisp symbols using M-. and M-,"
   nil " SliNav" elisp-slime-nav-mode-map)
 
-(eval-when-compile (require 'cl))
-(require 'etags)
-
-
 (defun elisp-slime-nav--all-navigable-symbol-names ()
   "Return a list of strings for the symbols to which navigation is possible."
-  (loop for x being the symbols
-        if (or (fboundp x) (boundp x) (symbol-plist x) (facep x))
-        collect (symbol-name x)))
+  (cl-loop for x being the symbols
+           if (or (fboundp x) (boundp x) (symbol-plist x) (facep x))
+           collect (symbol-name x)))
 
 (defun elisp-slime-nav--read-symbol-at-point ()
   "Return the symbol at point as a string.
