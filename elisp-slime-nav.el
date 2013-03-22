@@ -17,10 +17,11 @@
 ;;
 ;; Usage:
 ;;
-;;   (require 'elisp-slime-nav)
-;;   (add-hook 'emacs-lisp-mode-hook 'elisp-slime-nav-mode)
+;; Enable the package in elisp and ielm modes by simply loading it:
 ;;
-;; When installing from an ELPA package, this hook is added for you.
+;;   (require 'elisp-slime-nav)
+;;
+;; When installing from an ELPA package, this is not necessary.
 ;;
 ;; Known issues:
 ;;
