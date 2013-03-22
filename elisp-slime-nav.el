@@ -31,7 +31,13 @@
 
 (require 'help-mode)
 
-(defvar elisp-slime-nav-mode-map (make-keymap))
+(defvar elisp-slime-nav-mode-map
+  (let ((map (make-sparse-keymap)))
+    (define-key map (kbd "M-.")         'elisp-slime-nav-find-elisp-thing-at-point)
+    (define-key map (kbd "M-,")         'pop-tag-mark)
+    (define-key map (kbd "C-c C-d d")   'elisp-slime-nav-describe-elisp-thing-at-point)
+    (define-key map (kbd "C-c C-d C-d") 'elisp-slime-nav-describe-elisp-thing-at-point)
+    map))
 
 (defvar elisp-slime-nav-mode-lighter " SliNav")
 
@@ -92,12 +98,6 @@ With a prefix arg, prompt for the symbol to jump to.
 Argument SYM-NAME thing to find."
   (interactive (list (elisp-slime-nav--read-symbol-at-point)))
   (help-xref-interned (intern sym-name)))
-
-
-(define-key elisp-slime-nav-mode-map (kbd "M-.") 'elisp-slime-nav-find-elisp-thing-at-point)
-(define-key elisp-slime-nav-mode-map (kbd "M-,") 'pop-tag-mark)
-(define-key elisp-slime-nav-mode-map (kbd "C-c C-d d") 'elisp-slime-nav-describe-elisp-thing-at-point)
-(define-key elisp-slime-nav-mode-map (kbd "C-c C-d C-d") 'elisp-slime-nav-describe-elisp-thing-at-point)
 
 (provide 'elisp-slime-nav)
 ;;; elisp-slime-nav.el ends here
