@@ -75,7 +75,7 @@ Argument SYM-NAME thing to find."
   (interactive (list (elisp-slime-nav--read-symbol-at-point)))
   (when sym-name
     (let ((sym (intern sym-name)))
-      (message "search for %s" (pp-to-string sym))
+      (message "Searching for %s..." (pp-to-string sym))
       (ring-insert find-tag-marker-ring (point-marker))
       (cond
        ((fboundp sym) (find-function sym))
