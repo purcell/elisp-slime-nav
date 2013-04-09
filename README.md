@@ -2,7 +2,7 @@
 
 
 Slime allows very convenient navigation to the symbol at point (using
-<kbd>M-.)</kbd>, and the ability to pop back to previous marks (using <kbd>M-,</kbd>).
+<kbd>M-.</kbd>), and the ability to pop back to previous marks (using <kbd>M-,</kbd>).
 
 This plugin provides similar navigation for Emacs Lisp, supporting
 navigation to the definitions of variables, functions, libraries and
