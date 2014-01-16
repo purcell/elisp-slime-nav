@@ -71,9 +71,12 @@ If `current-prefix-arg' is not nil, the user is prompted for the symbol."
 
 ;;;###autoload
 (defun elisp-slime-nav-find-elisp-thing-at-point (sym-name)
-  "Jump to the elisp thing at point, be it a function, variable, library or face.
-With a prefix arg, prompt for the symbol to jump to.
-Argument SYM-NAME thing to find."
+  "Find the elisp thing at point, be it a function, variable, library or face.
+
+With a prefix arg, or if there is no thing at point, prompt for
+the symbol to jump to.
+
+Argument SYM-NAME is the thing to find."
   (interactive (list (elisp-slime-nav--read-symbol-at-point)))
   (when sym-name
     (let ((sym (intern sym-name)))
@@ -94,9 +97,13 @@ Argument SYM-NAME thing to find."
 ;;;###autoload
 (defun elisp-slime-nav-describe-elisp-thing-at-point (sym-name)
   "Display the full documentation of the elisp thing at point.
+
 The named subject may be a function, variable, library or face.
-With a prefix arg, prompt for the symbol to jump to.
-Argument SYM-NAME thing to find."
+
+With a prefix arg, or if there is not \"thing\" at point, prompt
+for the symbol to jump to.
+
+Argument SYM-NAME is the thing to find."
   (interactive (list (elisp-slime-nav--read-symbol-at-point)))
   (help-xref-interned (intern sym-name)))
 
