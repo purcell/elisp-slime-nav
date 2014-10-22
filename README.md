@@ -1,5 +1,7 @@
-# Slime-style navigation for Emacs Lisp
+[![Melpa Status](http://melpa.milkbox.net/packages/elisp-slime-nav-badge.svg)](http://melpa.milkbox.net/#/elisp-slime-nav)
+[![Melpa Stable Status](http://melpa-stable.milkbox.net/packages/elisp-slime-nav-badge.svg)](http://melpa-stable.milkbox.net/#/elisp-slime-nav)
 
+# Slime-style navigation for Emacs Lisp
 
 Slime allows very convenient navigation to the symbol at point (using
 <kbd>M-.</kbd>), and the ability to pop back to previous marks (using <kbd>M-,</kbd>).
