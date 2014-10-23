@@ -1,5 +1,5 @@
-[![Melpa Status](http://melpa.milkbox.net/packages/elisp-slime-nav-badge.svg)](http://melpa.milkbox.net/#/elisp-slime-nav)
-[![Melpa Stable Status](http://melpa-stable.milkbox.net/packages/elisp-slime-nav-badge.svg)](http://melpa-stable.milkbox.net/#/elisp-slime-nav)
+[![Melpa Status](http://melpa.org/packages/elisp-slime-nav-badge.svg)](http://melpa.org/#/elisp-slime-nav)
+[![Melpa Stable Status](http://stable.melpa.org/packages/elisp-slime-nav-badge.svg)](http://stable.melpa.org/#/elisp-slime-nav)
 
 # Slime-style navigation for Emacs Lisp
 
@@ -32,7 +32,7 @@ add the following to your `~/.emacs` or `~/.emacs.d/init.el`:
 
 If you're an Emacs 24 user or you have a recent version of
 `package.el` you can install `elisp-slime-nav` from the
-[MELPA](http://melpa.milkbox.net) repository. The version of
+[MELPA](http://melpa.org) repository. The version of
 `elisp-slime-nav` there will always be up-to-date. There are also
 packages in Marmalade.
 
