@@ -89,7 +89,7 @@ Argument SYM-NAME is the thing to find."
         (find-library sym-name))
        ((facep sym)
         (find-face-definition sym))
-       (:else
+       (t
         (progn
           (pop-tag-mark)
           (error "Don't know how to find '%s'" sym)))))))
