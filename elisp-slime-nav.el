@@ -90,9 +90,8 @@ Argument SYM-NAME is the thing to find."
        ((facep sym)
         (find-face-definition sym))
        (t
-        (progn
-          (pop-tag-mark)
-          (error "Don't know how to find '%s'" sym)))))))
+        (pop-tag-mark)
+        (error "Don't know how to find '%s'" sym))))))
 
 ;;;###autoload
 (defun elisp-slime-nav-describe-elisp-thing-at-point (sym-name)
