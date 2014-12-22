@@ -4,7 +4,6 @@
 ;; Keywords: navigation slime elisp emacs-lisp
 ;; URL: https://github.com/purcell/elisp-slime-nav
 ;; Version: DEV
-;; Package-Requires: ((cl-lib "0.2"))
 ;;
 ;;; Commentary:
 ;;
@@ -30,7 +29,6 @@
 ;;
 ;;; Code:
 
-(eval-when-compile (require 'cl-lib))
 (require 'etags)
 (require 'help-mode)
 
@@ -54,9 +52,12 @@
 
 (defun elisp-slime-nav--all-navigable-symbol-names ()
   "Return a list of strings for the symbols to which navigation is possible."
-  (cl-loop for x being the symbols
-           if (or (fboundp x) (boundp x) (symbol-plist x) (facep x))
-           collect (symbol-name x)))
+  (let ((result '()))
+    (mapatoms
+     (lambda (x)
+       (when (or (fboundp x) (boundp x) (symbol-plist x) (facep x))
+         (push (symbol-name x) result))))
+    result))
 
 (defun elisp-slime-nav--read-symbol-at-point ()
   "Return the symbol at point as a string.
