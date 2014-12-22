@@ -84,8 +84,10 @@ Argument SYM-NAME is the thing to find."
       (message "Searching for %s..." (pp-to-string sym))
       (ring-insert find-tag-marker-ring (point-marker))
       (cond
-       ((fboundp sym) (find-function sym))
-       ((boundp sym) (find-variable sym))
+       ((fboundp sym)
+        (find-function sym))
+       ((boundp sym)
+        (find-variable sym))
        ((or (featurep sym) (locate-library sym-name))
         (find-library sym-name))
        ((facep sym)
