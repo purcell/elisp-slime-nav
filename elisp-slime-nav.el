@@ -82,7 +82,10 @@ Argument SYM-NAME is the thing to find."
   (when sym-name
     (let ((sym (intern sym-name)))
       (message "Searching for %s..." sym-name)
-      (ring-insert find-tag-marker-ring (point-marker))
+      (if (fboundp 'xref-push-marker-stack)
+          (xref-push-marker-stack)
+        (with-no-warnings
+          (ring-insert find-tag-marker-ring (point-marker))))
       (cond
        ((fboundp sym)
         (find-function sym))
