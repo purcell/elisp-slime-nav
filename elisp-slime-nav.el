@@ -107,7 +107,10 @@ for the symbol to jump to.
 
 Argument SYM-NAME is the thing to find."
   (interactive (list (elisp-slime-nav--read-symbol-at-point)))
-  (help-xref-interned (intern sym-name)))
+  (if (fboundp 'describe-symbol)
+      (describe-symbol (intern sym-name))
+    (with-no-warnings
+      (help-xref-interned (intern sym-name)))))
 
 
 (provide 'elisp-slime-nav)
