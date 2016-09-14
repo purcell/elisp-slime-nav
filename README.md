@@ -33,8 +33,7 @@ add the following to your `~/.emacs` or `~/.emacs.d/init.el`:
 If you're an Emacs 24 user or you have a recent version of
 `package.el` you can install `elisp-slime-nav` from the
 [MELPA](http://melpa.org) repository. The version of
-`elisp-slime-nav` there will always be up-to-date. There are also
-packages in Marmalade.
+`elisp-slime-nav` there will always be up-to-date.
 
 Enable `elisp-slime-nav` in `emacs-lisp-mode` and `ielm` by adding
 code such as the following to your emacs startup file:
