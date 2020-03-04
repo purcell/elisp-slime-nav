@@ -1,12 +1,12 @@
-;;; elisp-slime-nav.el --- Make M-. and M-, work in elisp like they do in slime
+;;; elisp-slime-nav.el --- Make M-. and M-, work in elisp like they do in slime  -*- lexical-binding: t -*-
 
-;; Copyright (C) 2016  Steve Purcell
+;; Copyright (C) 2016-2020  Steve Purcell
 
 ;; Author: Steve Purcell <steve@sanityinc.com>
-;; Keywords: navigation slime elisp emacs-lisp
+;; Keywords: languages navigation slime elisp emacs-lisp
 ;; URL: https://github.com/purcell/elisp-slime-nav
 ;; Package-Version: 0
-;; Package-Requires: ((cl-lib "0.2"))
+;; Package-Requires: ((emacs "24.1") (cl-lib "0.2"))
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
